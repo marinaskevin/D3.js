@@ -1,0 +1,13 @@
+h1{ /* Solely used for 'Horizontal Bar Chart' text */
+    margin: 20px;
+}    
+div {
+    margin: 20px;
+    border: 2px solid black;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: right;
+}
