@@ -1,6 +1,27 @@
-var bars = d3.select("body")
-           .selectAll("div")
-           .data([24,16,18,12,22,16])
+var bars = d3.select("#chart")
+    .selectAll("div")
+    .data([4, 8, 15, 16, 20, 12])
 bars.enter().append("div")
-            .style("background-color", function(d){ return "rgb(0,"+((255*2)-d*20)+","+(d*20-255)+")"; })
-            .style("height", function(d){ return d*20+"px"; });
+    .text(function(d){ return d; })
+    .style("height", function(d){ return d*20+"px" })
+// function for generating random length (betweeen 0 and 20) array of random values (between 0 and 20)
+function randomsGenerator(){
+    var nums = [];
+    var size = Math.floor(Math.random()*20);
+    for (var i = 0; i < size; i++){
+        nums.push(Math.floor(Math.random()*20));
+    }
+    buildChart(nums);
+}
+function buildChart(newdata){
+    var bars = d3.select("#chart")
+        .selectAll("div")
+        .data(newdata)
+        .text(function(d){ return d; })
+        .style("height", function(d){ return d*20+"px" })
+    bars.enter().append("div")
+        .text(function(d){ return d; })
+        .style("height", function(d){ return d*20+"px" })
+        .style("background-color", "lightblue");
+    bars.exit().remove();
+}
