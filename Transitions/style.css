@@ -1,0 +1,18 @@
+#chart div {
+    display: inline-block;
+    width: 20px;
+    height: 50px;
+    vertical-align: bottom;
+    margin-right: 20px;
+    border: 2px solid black;
+}
+button {
+    display: block;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: gray;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    margin: 24px;
+}
