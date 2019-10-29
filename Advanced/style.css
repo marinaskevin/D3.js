@@ -1,0 +1,8 @@
+svg {
+    border: 3px solid black;
+}
+svg circle {
+    fill: purple;
+    stroke-width: 3;
+    stroke: black;
+}
