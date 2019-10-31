@@ -39,7 +39,7 @@ var barData2 = [  // transition to this set of data after 5 seconds
 var barWidth = Math.floor((width-margins.left-margins.right)/barData.length);
 // to wait 5 seconds before the transition starts, use setTimeout(function(){...}, 5000)
 setTimeout(function(){
-    //
+    animateChart(barData2);
 }, 5000)
 
 var xscale = d3.scaleLinear()
@@ -74,3 +74,16 @@ bars.enter().append("rect")
                .attr("x",function(d,i){ return xscale(i+0.5); })
                .attr("y",function(d){ return yscale(d.strength); })
                .attr("transform","translate("+margins.left+","+margins.top+")");
+
+function animateChart(newdata){
+    var bars = d3.select("#chart").select("svg")
+               .selectAll("rect")
+               .data(newdata)
+               .transition()
+               .duration(2000)
+               .attr("width",barWidth)
+               .attr("height",function(d){ return height-margins.top-margins.bottom-yscale(d.strength); } )
+               .attr("x",function(d,i){ return xscale(i+0.5); })
+               .attr("y",function(d){ return yscale(d.strength); })
+               .attr("transform","translate("+margins.left+","+margins.top+")");
+}
