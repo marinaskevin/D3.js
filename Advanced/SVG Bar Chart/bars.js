@@ -43,14 +43,14 @@ setTimeout(function(){
 }, 5000)
 
 var xscale = d3.scaleLinear()
-                .domain([0,12.5])
+                .domain([0,barData.length+0.5])
                 .range([0,width-margins.left-margins.right]);
 var yscale = d3.scaleLinear()
                 .domain([0,50])
                 .range([height-margins.top-margins.bottom,0]);
 
 var xaxis = d3.axisBottom(xscale)
-                .ticks(12);
+                .ticks(barData.length);
 var yaxis = d3.axisLeft(yscale)
                 .ticks(10);
 
@@ -65,12 +65,12 @@ svg.append("g")
      .attr("transform","translate("+margins.left+","+(height-margins.bottom)+")")
      .call(xaxis);
 
-var i=0.5;
-
 var bars = d3.select("#chart").select("svg")
                .selectAll("rect")
                .data(barData);
 bars.enter().append("rect")
                .attr("width",barWidth)
-               .attr("height",function(d){ return yscale(d.strength); } )
-               .attr("transform",function(d){ return "translate("+(margins.left+xscale(i++))+","+(height-margins.bottom-yscale(d.strength))+")"; });
+               .attr("height",function(d){ return height-margins.top-margins.bottom-yscale(d.strength); } )
+               .attr("x",function(d,i){ return xscale(i+0.5); })
+               .attr("y",function(d){ return yscale(d.strength); })
+               .attr("transform","translate("+margins.left+","+margins.top+")");
