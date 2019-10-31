@@ -1,0 +1,9 @@
+svg {
+    border: 3px solid black;
+}
+svg rect {
+    fill: url(#gradient); /* this finds the linearGradient in HTML */
+    stroke: black;
+    stroke-width: 1;
+}
+
